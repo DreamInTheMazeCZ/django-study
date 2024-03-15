@@ -6,10 +6,22 @@
 
 {% block content %}
 
-{% for x in fruits %}
-    <h1>{{x}}</h1>
+{% for x in mymembers %}
+    <p
+        {% if forloop.first %}
+        style='background-color:lightblue;'
+        {% endif %}>
+    {{x}}</p>
+
+{% empty %}
+    <p>No members</p>
+
 {% endfor %}
 
-<p>In views.py you can see what the fruits variable looks like.</p>
+{% if greeting == 1 %}
+  <h1>Hello</h1>
+{% else %}
+  <h1>Bye</h1>
+{% endif %}
 
 {% endblock %}

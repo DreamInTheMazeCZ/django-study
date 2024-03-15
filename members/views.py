@@ -27,8 +27,9 @@ def main(request):
     return HttpResponse(template.render())
 
 def testing(request):
+    mymems = Member.objects.all().values()
     template = loader.get_template('template.html')
     context = {
-        'fruits' : ['Apple', 'Banana', 'Cherry']
+        'mymembers':mymems
     }
     return HttpResponse(template.render(context, request))
