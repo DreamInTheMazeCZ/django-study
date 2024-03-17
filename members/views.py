@@ -2,6 +2,7 @@
 from django.http import HttpResponse
 from django.template import loader
 from .models import Member
+from django.db.models import Q
 
 def members(request):
     # return HttpResponse("Hello World!")
@@ -27,7 +28,9 @@ def main(request):
     return HttpResponse(template.render())
 
 def testing(request):
-    mymems = Member.objects.all().values()
+    # mymems = Member.objects.all().values()
+    # mymems = Member.objects.values_list('firstname')
+    mymems = Member.objects.filter(Q(firstname='Emil') | Q(firstname='Tobias')).values()
     template = loader.get_template('template.html')
     context = {
         'mymembers':mymems

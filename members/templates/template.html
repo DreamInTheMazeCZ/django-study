@@ -6,6 +6,36 @@
 
 {% block content %}
 
+    <p>{{mymembers}}</p>
+
+<a href = "/">HOME</a></p>
+
+{% comment %}
+<table border='3'>
+  <tr>
+    <th>ID</th>
+    <th>Firstname</th>
+    <th>Lastname</th>
+  </tr>
+  {% for x in mymembers %}
+    <tr>
+      <td>{{ x.id }}</td>
+        <td>{{ x.firstname }}</td>
+      <td>{{ x.lastname }}</td>
+    </tr>
+  {% endfor %}
+
+</table>
+
+{% include "mymenu.html" with me="TOBIAS" sponsor="W3SCHOOLS" %}
+<h1>Welcome</h1>
+<p>This is my webpage</p>
+
+
+<h1>Hello</h1>
+<p>This page contains a footer in a template.</p>
+{% include 'footer.html' %} 
+
 {% for x in mymembers %}
     <p
         {% if forloop.first %}
@@ -24,4 +54,7 @@
   <h1>Bye</h1>
 {% endif %}
 
+{% endcomment %}
+
 {% endblock %}
+
