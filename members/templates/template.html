@@ -1,60 +1,13 @@
-{% extends "master.html" %}
+{% load static %}
 
-{% block title %}
-  Test area
-{% endblock %}
-
-{% block content %}
-
-    <p>{{mymembers}}</p>
-
-<a href = "/">HOME</a></p>
-
-{% comment %}
-<table border='3'>
-  <tr>
-    <th>ID</th>
-    <th>Firstname</th>
-    <th>Lastname</th>
-  </tr>
-  {% for x in mymembers %}
-    <tr>
-      <td>{{ x.id }}</td>
-        <td>{{ x.firstname }}</td>
-      <td>{{ x.lastname }}</td>
-    </tr>
-  {% endfor %}
-
-</table>
-
-{% include "mymenu.html" with me="TOBIAS" sponsor="W3SCHOOLS" %}
-<h1>Welcome</h1>
-<p>This is my webpage</p>
-
-
-<h1>Hello</h1>
-<p>This page contains a footer in a template.</p>
-{% include 'footer.html' %} 
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="{% static 'myfirst.css' %}">
+<body>
 
 {% for x in mymembers %}
-    <p
-        {% if forloop.first %}
-        style='background-color:lightblue;'
-        {% endif %}>
-    {{x}}</p>
-
-{% empty %}
-    <p>No members</p>
-
+  <h1>{{ x }}</h1>
 {% endfor %}
 
-{% if greeting == 1 %}
-  <h1>Hello</h1>
-{% else %}
-  <h1>Bye</h1>
-{% endif %}
-
-{% endcomment %}
-
-{% endblock %}
-
+</body>
+</html>
