@@ -5,10 +5,13 @@
 {% endblock %}
 
 {% block content %}
-    <h1>{{mymem.firstname}} {{mymem.lastname}}</h1>
-
-    <p>Phone : {{mymem.phone}}</p>
-    <p>Member since : {{mymem.joined_date}}</p>
-
-    <p>Back to <a href="/members">Members</a></p>
+    <div class="mycard">
+        <h1>{{mymem.firstname}} {{mymem.lastname}}</h1>
+        <ul>
+            <li>Phone : {{mymem.phone}}</li>
+            <li>Member since : {{mymem.joined_date}}</li>
+        </ul>
+        <p>Back to <a href="/members">Members</a></p>
+    </div>
+        
 {% endblock %}

@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import os
+from dotenv import load_dotenv
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -82,8 +84,14 @@ WSGI_APPLICATION = 'my_tennis_club.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        # 'ENGINE': 'django.db.backends.sqlite3',
+        # 'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'postgres',
+        'USER': 'masteruser',
+        'PASSWORD': os.getenv('DB_PW'),
+        'HOST': os.getenv('DB_HOST'),
+        'PORT': '5432'
     }
 }
 
@@ -124,15 +132,17 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
+STATIC_ROOT=os.path.join(BASE_DIR,'productionfiles')
+
 STATIC_URL = '/static/'
 
+# Add this in your settings.py file:
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'members','static'),  # base_dir은 프로젝트 폴더
+    os.path.join(BASE_DIR, 'mystaticfiles'),  # base_dir은 프로젝트 폴더
 ]
- 
-STATIC_ROOT=os.path.join(BASE_DIR,'productionfiles')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
